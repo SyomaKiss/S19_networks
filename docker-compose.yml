@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  client:
+    image: ubuntu:latest
+    build: .
+    container_name: client
+    volumes:
+      - .:/app/
+    tty: true
+    networks:
+      client_server:
+        ipv4_address: 10.20.1.11
+
+  server:
+    image: ubuntu:latest
+    build: .
+    container_name: server
+    volumes:
+      - .:/app/
+    tty: true
+    networks:
+      client_server:
+        ipv4_address: 10.20.1.22
+
+networks:
+  client_server:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.20.1.0/24
+        gateway: 10.20.1.1
