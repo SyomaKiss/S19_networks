@@ -1,1 +1,1 @@
-rm node.c && cp ../node.c ./node.c && gcc node.c -o node && ./node && rm node
+rm node.c && cp ../node.c ./node.c && gcc node.c -o node1 && ./node1 && rm node1
